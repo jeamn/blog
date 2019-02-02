@@ -71,10 +71,10 @@ module.exports = {
     entry: {
         index: ['index.js','app.js'],
         vendor: 'vendor.js'
-    }
+    },
     output: {
         filename: '[name].min.[hash:5].js'//name对应上面 entry 对象的每个key
-    }
+    },
     rules: [
         {
             test: /\.css$/,
@@ -86,4 +86,76 @@ module.exports = {
     ]
 }
 ```
+
+### 三、各种方式打包模块
+webpack打包可以直接在命令行里面通过 
+> webpack '要打包的文件' 
+
+或者，通过配置 webpack.config.js 来打包，分别来看一下
+
+首先创建入口文件 app.js
+
+```js
+//esModule 语法
+import sum from './sum.js' 
+sum(4, 5);
+
+// CommonJS语法
+let sum = require('./sum')
+sum(4, 5);
+
+// Amd 语法
+require(['./sum'],function(sum){
+  sum(4, 5)
+})
+```
+
+在创建 sum.js
+
+```js
+// esModule 语法
+export default function(a, b) { 
+  console.log(`${a}+${b}=${a+b}`)
+}
+
+// CommonJS 语法
+module.exports = function(a, b){
+  console.log(`${a}+${b}=${a+b}`)
+}
+
+// Amd 语法
+define(function(require, factory) {
+  'use strict';
+  return function(a, b){
+    console.log(`${a}+${b}=${a+b}`)
+  }
+});
+```
+
+或者直接配置 webpakc.config.js 文件，必须使用 CommonJS 规范
+
+```js
+module.exports = {
+    entry: {
+        app: 'app.js',
+    }
+    output: {
+        filename: '[name].min.[hash:5].js'//name对应上面 entry 对象的每个key
+}
+```
+
+然后终端运行 webpack，就可以打包了，如果配置文件的名称不是 webpack.config.js ，那么终端对应的命令为：
+> webpack --config webpack.conf.js
+
+
+### 四、编译打包 ES6
+在 webpack 中可以借助 loader 来编译 ES6 的代码
+
+```js
+```
+
+
+
+ 
+
 
