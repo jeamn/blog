@@ -1,5 +1,5 @@
 ---
-title: JavaScript 设计模式之旅（一）开发环境搭建
+title: JavaScript 设计模式（一）开发环境搭建
 tags:
   - JavaScript
   - ES6

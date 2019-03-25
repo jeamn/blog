@@ -1,5 +1,5 @@
 ---
-title: JavaScript 设计模式之旅（二）设计原则和设计模式
+title: JavaScript 设计模式（二）设计原则和设计模式
 tags:
   - JavaScript
   - ES6
