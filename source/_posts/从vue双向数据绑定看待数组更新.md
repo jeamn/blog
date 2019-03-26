@@ -25,6 +25,8 @@ function observer(obj){
 }
 ```
 
+<!-- more -->
+
 当被监听的是一个对象的时候，我们遍历这个对象里面的所有属性，利用对象的 defineProperty 属性来对数据进行劫持，接下来我们实现这个方法：
 ```js
 function defineReactive(obj, key, value){
@@ -47,7 +49,7 @@ obj.name = 'mike'
 console.log(obj.name);
 ```
 
-可以看到控制台打印了一次“数据更新”，data 中的数据也相应地发生了改变。这其实就是 vue 双向相互局绑定的雏形。
+可以看到控制台打印了一次“数据更新”，data 中的数据也相应地发生了改变。这其实就是 vue 双向数据绑定的雏形。
 
 如果 data 中的属性是对象呢？接下来我们改一下数据源：
 ```js
